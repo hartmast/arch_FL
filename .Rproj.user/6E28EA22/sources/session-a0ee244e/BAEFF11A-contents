@@ -6,6 +6,10 @@ bibliography: references.bib
 csl: unified-style-sheet-for-linguistics.csl
 ---
 
+## About this repository
+
+This repository contains data and code for reproducing a study on the use of *arch-* in present-day English. The data come from the ENCOW corpus (@schaferBuildingLargeCorpora2012) described [here](https://web.archive.org/web/20210924132944/https://corporafromtheweb.org/encow16/).
+
 ## Preliminaries
 
 Loading packages:
@@ -127,8 +131,10 @@ cosDist_mds %>% filter(logFreq>2) %>% ggplot(aes(x = V1, y = V2,
   stat_ellipse(aes(group = as.factor(kcluster), fill = as.factor(kcluster)),
                geom = "polygon", alpha = 0.1, color = NA) +
   geom_text_repel(max.overlaps = 25) + theme_bw() + guides(size = 'none') +
-  guides(col = "none", fill = "none")
+  guides(col = "none", fill = "none") +
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())
 
+# ggsave("images/archdistances_k_means.png", width = 7, height = 5, dpi = 600)
 ```
 
 (To see a larger version of the image, right-click and select "Open image in new tab". In most browsers you should be able to zoom in and out using Cmd and + or Cmd and -)
