@@ -13,6 +13,7 @@ Loading packages:
 ```{r}
 #| message: false
 #| warning: false
+#| code-fold: true
 library(tidyverse)
 library(wordVectors)
 library(vroom)
@@ -28,6 +29,8 @@ library(cluster)
 Read in the data from ENCOW. The data are in two frequency lists, one for nouns and one for adjectives.
 
 ```{r}
+#| message: false
+#| warning: false
 # read nouns
 arch_nouns <- read_xlsx("data/COW16 nouns cleaned.xlsx")
 
