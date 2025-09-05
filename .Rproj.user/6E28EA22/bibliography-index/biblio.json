@@ -1,0 +1,57 @@
+{
+    "sources": [
+        {
+            "DOI": "10.1017/S0022226723000117",
+            "URL": "https://www.cambridge.org/core/product/identifier/S0022226723000117/type/journal_article",
+            "author": [
+                {
+                    "family": "Hartmann",
+                    "given": "Stefan"
+                },
+                {
+                    "family": "Ungerer",
+                    "given": "Tobias"
+                }
+            ],
+            "container-title": "Journal of Linguistics",
+            "id": "hartmann2024",
+            "issue": "3",
+            "issued": {
+                "date-parts": [
+                    [
+                        2024,
+                        8
+                    ]
+                ]
+            },
+            "language": "en",
+            "page": "599-634",
+            "title": "Attack of the snowclones: A corpus-based analysis of extravagant formulaic patterns",
+            "title-short": "Attack of the snowclones",
+            "type": "article-journal",
+            "volume": "60"
+        },
+        {
+            "author": [
+                {
+                    "family": "Levshina",
+                    "given": "Natalia"
+                }
+            ],
+            "id": "levshinaHowLinguisticsData2015",
+            "issued": {
+                "date-parts": [
+                    [
+                        2015
+                    ]
+                ]
+            },
+            "note": "Citation Key: levshinaHowLinguisticsData2015",
+            "publisher": "John Benjamins",
+            "publisher-place": "Amsterdam, Philadelphia",
+            "title": "How to do linguistics with r. Data exploration and statistical analysis",
+            "type": "book"
+        }
+    ],
+    "project_biblios": []
+}
