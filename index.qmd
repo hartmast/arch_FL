@@ -25,6 +25,7 @@ library(pbapply)
 library(readxl)
 library(ggrepel)
 library(cluster)
+library(ggiraph)
 
 ```
 
@@ -123,10 +124,31 @@ cosDist_mds$kcluster <- as.factor(as.numeric(k_means_clusters$cluster))
 Finally, create the plot:
 
 ```{r}
+#| eval: false
+# plot for publication
+
+cosDist_mds %>% 
+  filter(n>4) %>% 
+  ggplot(aes(x = V1, y = V2, 
+                                                 size = n*5, label = lemma)) +
+  stat_ellipse(aes(group = as.factor(kcluster), fill = as.factor(kcluster)),
+               geom = "polygon", alpha = 0.1, color = NA) +
+  geom_text_repel(max.overlaps = 35, seed = 1705, segment.size = .2) + theme_bw() + guides(size = 'none') +
+  guides(col = "none", fill = "none") +
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())
+
+ggsave("images/archdistances_k_means.png", width = 7, height = 5, dpi = 600)
+```
+
+```{r}
 #| message: false
 #| warning: false
+#| fig-width: 20
+#| fig-height: 20
 set.seed(1705)
-cosDist_mds %>% filter(logFreq>2) %>% ggplot(aes(x = V1, y = V2, 
+p <- cosDist_mds %>% 
+  # filter(n>4) %>% 
+  ggplot(aes(x = V1, y = V2, 
                                                  size = n*5, label = lemma)) +
   stat_ellipse(aes(group = as.factor(kcluster), fill = as.factor(kcluster)),
                geom = "polygon", alpha = 0.1, color = NA) +
@@ -134,10 +156,17 @@ cosDist_mds %>% filter(logFreq>2) %>% ggplot(aes(x = V1, y = V2,
   guides(col = "none", fill = "none") +
   theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())
 
-# ggsave("images/archdistances_k_means.png", width = 7, height = 5, dpi = 600)
+g <- girafe(ggobj = p,
+            options = list(
+              opts_zoom(max = 5),   
+              opts_sizing(rescale = TRUE),
+              opts_toolbar(saveaspng = TRUE)
+            ))
+
+g
 ```
 
-(To see a larger version of the image, right-click and select "Open image in new tab". In most browsers you should be able to zoom in and out using Cmd and + or Cmd and -)
+Click on the magnifying glass symbol at the upper-right corner to pan and zoom.
 
 ## References
 
