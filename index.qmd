@@ -19,7 +19,7 @@ Loading packages:
 #| warning: false
 #| code-fold: true
 library(tidyverse)
-library(wordVectors)
+library(wordVectors) # https://github.com/bmschmidt/wordVectors/tree/master
 library(vroom)
 library(pbapply)
 library(readxl)
