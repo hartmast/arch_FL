@@ -62,6 +62,9 @@ arch_nouns$Base_Lemma <- gsub("^arch-?", "", arch_nouns$Token)
 
 # read in again
 arch <- read_xlsx("data/arch_adj_n.xlsx")
+
+# only keeo true positives
+arch <- filter(arch, Keep == "y")
 ```
 
 ## Model
@@ -135,9 +138,10 @@ cosDist_mds %>%
                geom = "polygon", alpha = 0.1, color = NA) +
   geom_text_repel(max.overlaps = 35, seed = 1705, segment.size = .2) + theme_bw() + guides(size = 'none') +
   guides(col = "none", fill = "none") +
-  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank()) +
+  scale_size_continuous(range = c(5,15))
 
-ggsave("images/archdistances_k_means.png", width = 7, height = 5, dpi = 600)
+ggsave("images/archdistances_k_means.png", width = 14, height = 14, dpi = 600)
 ```
 
 ```{r}
@@ -152,9 +156,10 @@ p <- cosDist_mds %>%
                                                  size = n*5, label = lemma)) +
   stat_ellipse(aes(group = as.factor(kcluster), fill = as.factor(kcluster)),
                geom = "polygon", alpha = 0.1, color = NA) +
-  geom_text_repel(max.overlaps = 25) + theme_bw() + guides(size = 'none') +
+  geom_text() + theme_bw() + guides(size = 'none') +
   guides(col = "none", fill = "none") +
-  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank()) +
+  scale_size_continuous(range = c(1,6))
 
 g <- girafe(ggobj = p,
             options = list(
