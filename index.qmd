@@ -18,14 +18,25 @@ Loading packages:
 #| message: false
 #| warning: false
 #| code-fold: true
+
+# install packages if needed
+
+
 library(tidyverse)
-library(wordVectors) # https://github.com/bmschmidt/wordVectors/tree/master
+library(remotes)
+library(devtools)
+#devtools::install_github("bmschmidt/wordVectors")
+library(wordVectors) 
 library(vroom)
 library(pbapply)
 library(readxl)
 library(ggrepel)
 library(cluster)
 library(ggiraph)
+library(renv)
+
+# Snapshot of packages
+# renv::snapshot()
 
 ```
 
@@ -177,3 +188,9 @@ Click on the magnifying glass symbol at the upper-right corner to pan and zoom.
 
 ::: {#refs}
 :::
+
+## Session info
+
+```{r}
+sessionInfo()
+```
